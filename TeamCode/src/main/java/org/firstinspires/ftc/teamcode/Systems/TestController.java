@@ -46,18 +46,7 @@ public class TestController extends OpMode {
     public void start() {
         runtime.reset();
     }
-
-    @Override
-    public void loop() {
-        turn();
-    }
-
-    @Override
-    public void stop() {
-
-    }
-
-
+    
 
     public void turn() {
         double leftPower;
@@ -77,6 +66,16 @@ public class TestController extends OpMode {
 
         telemetry.addData(caption: "Status", value: "Run Time: " + runtime.toString());
         telemetry.addData(caption: "Motors", value: "left (%.2f), right (%.2f)", leftPower, rightPower);
+
+    }
+
+    @Override
+    public void loop() {
+        turn();
+    }
+
+    @Override
+    public void stop() {
 
     }
 }

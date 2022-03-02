@@ -13,5 +13,4 @@ public class MotorSystem implements Subsystem {
         rfMotor = hardwareMap.getMotor(CustomHardwareMap.MotorName.FRONT_RIGHT);
         rbMotor = hardwareMap.getMotor(CustomHardwareMap.MotorName.BACK_RIGHT);
     }
-    
 }
