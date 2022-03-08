@@ -18,21 +18,21 @@ public class TestController extends OpMode {
 
     @Override
     public void init() {
-        telemetry.addData(caption: "Status", value: "Initialized");
+        telemetry.addData( "Status", "Initialized");
 
         //Initialize the hardware variables
 
-        backleft = hardwareMap.get(DcMotor.class, deviceName: "backleft");
-        backright = hardwareMap.get(DcMotor.class, deviceName: "backright");
-        frontleft = hardwareMap.get(DcMotor.class, deviceName: "frontleft");
-        frontright = hardwareMap.get(DcMotor.class, deviceName: "frontright");
+        backleft = hardwareMap.get(DcMotor.class, "backleft");
+        backright = hardwareMap.get(DcMotor.class, "backright");
+        frontleft = hardwareMap.get(DcMotor.class, "frontleft");
+        frontright = hardwareMap.get(DcMotor.class, "frontright");
 
         backleft.setDirection(DcMotor.Direction.FORWARD);
         backright.setDirection(DcMotor.Direction.REVERSE);
         frontleft.setDirection(DcMotor.Direction.FORWARD);
         frontright.setDirection(DcMotor.Direction.REVERSE);
 
-        telemetry.addData(caption: "Status", value: "Initialized");
+        telemetry.addData( "Status", "Initialized");
 
     }
 
@@ -46,7 +46,7 @@ public class TestController extends OpMode {
     public void start() {
         runtime.reset();
     }
-    
+
 
     public void turn() {
         double leftPower;
@@ -54,8 +54,8 @@ public class TestController extends OpMode {
 
         double drive = -gamepad1.left_stick_y;
         double turn = gamepad1.right_stick_x;
-        leftPower = Range.clip(number: drive + turn, min: -1.0, max: 1.0);
-        rightPower = Range.clip(number: drive - turn, min: -1.0, max: 1.0);
+        leftPower = Range.clip(drive + turn, -1.0, 1.0);
+        rightPower = Range.clip(drive - turn, -1.0, 1.0);
 
         backleft.setPower(leftPower);
         backright.setPower(rightPower);
@@ -64,8 +64,8 @@ public class TestController extends OpMode {
         frontright.setPower(rightPower);
 
 
-        telemetry.addData(caption: "Status", value: "Run Time: " + runtime.toString());
-        telemetry.addData(caption: "Motors", value: "left (%.2f), right (%.2f)", leftPower, rightPower);
+        telemetry.addData("Status", "Run Time: " + runtime.toString());
+        telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
 
     }
 
